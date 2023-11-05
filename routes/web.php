@@ -56,6 +56,6 @@ Route::post('/resetpassword', [ChangePasswordController::class, 'processChangePa
 
 Route::get('/firstLogin', [MahasiswaFirstLogin::class, 'firstLogin'])->middleware(['auth', 'user.role:mahasiswa', 'is.first.login']);
 
-Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa']);
-Route::post('/importMahasiswa', [RegisterController::class, 'importMahasiswa'])->name('importMahasiswa');
+Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importMahasiswa');
+Route::post('/admin/operator/importMahasiswa', [RegisterController::class, 'importMahasiswa'])->name('importMahasiswa');
 
