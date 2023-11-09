@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dosenwali', [AdminController::class, 'dosenwali'])->middleware('userAkses:dosenwali');
     Route::get('/admin/departemen', [AdminController::class, 'departemen'])->middleware('userAkses:departemen');
     Route::get('/admin/operator', [AdminController::class, 'operator'])->middleware('userAkses:operator');
-    Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
+    Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
 /** Routes Register */
@@ -57,7 +57,7 @@ Route::post('/resetpassword', [ChangePasswordController::class, 'processChangePa
 
 Route::get('/firstLogin', [MahasiswaFirstLogin::class, 'firstLogin'])->middleware(['auth', 'user.role:mahasiswa', 'is.first.login']);
 
-Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importMahasiswa');
+Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importFormMahasiswa');
 Route::post('/admin/operator/importMahasiswa', [RegisterController::class, 'importMahasiswa'])->name('importMahasiswa');
 
 Route::get('/akademik/irs', [AkademikController::class, 'showIRS'])->name('show-irs');
