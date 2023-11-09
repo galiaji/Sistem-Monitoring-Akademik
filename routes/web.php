@@ -37,10 +37,11 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/mahasiswa', [AdminController::class, 'mahasiswa'])->middleware('userAkses:mahasiswa');
+    Route::get('/biodata', [SesiController::class, 'biodata'])->name('biodata'); // Definisi rute ini
     Route::get('/admin/dosenwali', [AdminController::class, 'dosenwali'])->middleware('userAkses:dosenwali');
     Route::get('/admin/departemen', [AdminController::class, 'departemen'])->middleware('userAkses:departemen');
     Route::get('/admin/operator', [AdminController::class, 'operator'])->middleware('userAkses:operator');
-    Route::get('/logout', [SesiController::class, 'logout']);
+    Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
 /** Routes Register */
@@ -56,6 +57,9 @@ Route::post('/resetpassword', [ChangePasswordController::class, 'processChangePa
 
 Route::get('/firstLogin', [MahasiswaFirstLogin::class, 'firstLogin'])->middleware(['auth', 'user.role:mahasiswa', 'is.first.login']);
 
-Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importFormMahasiswa');
+Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importMahasiswa');
 Route::post('/admin/operator/importMahasiswa', [RegisterController::class, 'importMahasiswa'])->name('importMahasiswa');
 
+Route::get('/akademik/irs', [AkademikController::class, 'showIRS'])->name('show-irs');
+Route::post('/akademik/irs/pilih/{id}', [AkademikController::class, 'pilihMatkul'])->name('pilih-matkul');
+Route::post('/akademik/irs/batal/{id}', [AkademikController::class, 'batalMemilih'])->name('batal-memilih');

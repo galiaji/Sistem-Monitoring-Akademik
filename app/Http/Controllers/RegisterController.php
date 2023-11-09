@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'email' => 'required|email:dns|unique:mahasiswa',
             'email_verified_at' => 'nullable',
             'password' => ['required', 'min:8', 'max:150'],
-            'NIK' => 'required|min:16',
+            'NIM' => 'required',
             'no_hp' => 'nullable',
         ]);
 

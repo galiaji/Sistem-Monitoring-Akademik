@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SesiController extends Controller
 {
@@ -28,19 +30,46 @@ class SesiController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            if (Auth::user()->role == 'mahasiswa') {
+            $user = Auth::user();
+
+            if ($user->role == 'mahasiswa') {
+                // Cek apakah kolom 'nama_ibu' kosong
+                $mahasiswa = Mahasiswa::where('nim', $user->nim)->first();
+
+                if (empty($mahasiswa->nama_ibu)) {
+                    return redirect()->route('biodata')->with('success', 'Silahkan Lengkapi Data Anda!');
+                }
+            }
+
+            // Setelah melakukan pengecekan, lanjutkan dengan rute sesuai peran
+            if ($user->role == 'mahasiswa') {
                 return redirect('admin/mahasiswa');
-            } elseif (Auth::user()->role == 'dosenwali') {
+            } elseif ($user->role == 'dosenwali') {
                 return redirect('admin/dosenwali');
-            } elseif (Auth::user()->role == 'departemen') {
+            } elseif ($user->role == 'departemen') {
                 return redirect('admin/departemen');
-            } elseif (Auth::user()->role == 'operator') {
+            } elseif ($user->role == 'operator') {
                 return redirect('admin/operator');
             }
         } else {
-            return redirect('')->withErrors('Username dan Password yang dimasukan tidak sesuai')->withInput();
+            return redirect('login')->withErrors('Username dan Password yang dimasukan tidak sesuai')->withInput();
         }
     }
+
+    public function biodata()
+    {
+        $user = Auth::user();
+        $mahasiswa = Mahasiswa::where('nim', $user->nim)->first();
+
+        if ($user->role == 'mahasiswa') {
+            if (empty($mahasiswa->nama_ibu)) {
+                return view('biodata', compact('mahasiswa'));
+            }
+        }
+
+        return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+    }
+
     function logout()
     {
         Auth::logout();

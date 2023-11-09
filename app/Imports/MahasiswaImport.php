@@ -17,7 +17,6 @@ class MahasiswaImport implements ToModel, WithStartRow
     {
         return new Mahasiswa([
             'nim'           => $row[0],
-            'user_id'       => $row[8],
             'nama_lengkap'  => $row[1], 
             'angkatan'      => $row[2],
             'status'        => $row[3],

@@ -15,7 +15,6 @@ class Mahasiswa extends Model implements Authenticatable
 
     protected $fillable = [
         'nim',
-        'user_id',
         'nama_lengkap',
         'angkatan',
         'status',
@@ -54,17 +53,5 @@ class Mahasiswa extends Model implements Authenticatable
     public function user()
     {
         return $this->hasOne(\App\Models\User::class, 'user_id');
-    }
-
-    public function isDataPribadiUpdated()
-    {
-        return !empty($this->nama_lengkap) &&
-            !empty($this->tempat_lahir) &&
-            !empty($this->tanggal_lahir) &&
-            !empty($this->nik) &&
-            !empty($this->nama_ibu) &&
-            !empty($this->nomor_hp) &&
-            !empty($this->email_pribadi) &&
-            !empty($this->alamat_asal);
     }
 }

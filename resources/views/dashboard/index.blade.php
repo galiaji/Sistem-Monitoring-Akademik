@@ -133,12 +133,9 @@
 
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">Hello, Welcome {{ auth()->user()->name }} !</a>
-        <form action="/logout" method="POST">
+        <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button class="bg-dark grey">
-                Sign out
-            </button>
-            </a>
+            <button type="submit" class="btn btn-sm btn-secondary span font-inter-italic font-italic text-blue-600 italic hover:text-blue-500 hover:underline">Logout >></button>
         </form>
 
         <ul class="navbar-nav flex-row d-md-none">
@@ -195,11 +192,11 @@
                     <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="NIK"  class="form-label">NIK</label>
+                    <label for="NIK" class="form-label">NIK</label>
                     <input type="text" name="NIK" id="NIK" value="{{ old('NIK') }}" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="no_hp"  class="form-label">No. HP</label>
+                    <label for="no_hp" class="form-label">No. HP</label>
                     <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') }}" class="form-control" required>
                 </div>
                 <br>

@@ -14,7 +14,7 @@
 <body>
     <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10 shadow-lg">
         <div class="absolute inset-0">
-            <img class="object-cover w-full h-full bg-transparent" src="https://cdn.rareblocks.xyz/collection/celebration/images/headers/3/coworking-space.jpg" alt=""/>
+            <img class="object-cover w-full h-full bg-transparent" src="https://cdn.rareblocks.xyz/collection/celebration/images/headers/3/coworking-space.jpg" alt="" />
         </div>
         <div class="container m-auto">
             <div class="flex items-center justify-between relative">
@@ -27,7 +27,7 @@
                         <div class="muhammad-akmal-wrapper inline-flex items-center justify-end gap-10 flex-0">
                             <p class="muhammad-akmal relative inline font-inter font-normal text-transparent text-18 leading-normal">
                                 <span class="text-wrapper text-white">Hello, Welcome {{ auth()->user()->name }}</span><br>
-                                <a href="/logout"> 
+                                <a href="/logout">
                                     <span class="span font-inter-italic font-italic text-blue-600 italic hover:text-blue-500 hover:underline">Logout</span>
                                 </a>
                             </p>
@@ -43,34 +43,48 @@
                 <h1 class="text-xl font-semibold m-auto">Registrasi Mahasiswa</h1>
             </div>
             <section class="p-4">
-        <div class="bg-white shadow-lg p-6 rounded-lg">
-            <form method="POST" action="/register" class="space-y-4">
-                @csrf
-                <div>
-                    <label for="nama_lengkap" class="block text-sm font-medium text-gray-600">Nama Lengkap</label>
-                    <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ old('nama_lengkap') }}" class="w-full px-3 py-2 border rounded-md" required>
+                <div class="bg-white shadow-lg p-6 rounded-lg">
+                    <form method="POST" action="/register" class="space-y-4">
+                        @csrf
+                        <div>
+                            <label for="nama_lengkap" class="block text-sm font-medium text-gray-600">Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ old('nama_lengkap') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+                            <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+                            <input type="password" name="password" id="password" value="{{ old('password') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <div>
+                            <label for="NIM" class="block text-sm font-medium text-gray-600">NIM</label>
+                            <input type="text" name="NIM" id="NIM" value="{{ old('NIM') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <div>
+                            <label for="angkatan" class="block text-sm font-medium text-gray-600">Angkatan</label>
+                            <input type="text" name="angkatan" id="angkatan" value="{{ old('angkatan') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <!-- Tambah input untuk status -->
+                        <div>
+                            <label for="status" class="block text-sm font-medium text-gray-600">Status</label>
+                            <input type="text" name="status" id="status" value="{{ old('status') }}" class="w-full px-3 py-2 border rounded-md" required>
+                        </div>
+                        <!-- Tambah input untuk dosen_wali -->
+                        <div>
+                            <label for="dosen_wali" class="block text-sm font-medium text-gray-600">Dosen Wali</label>
+                            <input type="text" name="dosen_wali" id="dosen_wali" value="{{ old('dosen_wali') }}" class="w-full px-3 py-2 border rounded-md">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600">Register</button>
+                        <a href="/admin/operator">
+                            <button type="button" class="w-full bg-red-500 text-white font-medium py-2 mt-4 rounded-md hover:bg-red-600">Back</button>
+                        </a>
+                    </form>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" class="w-full px-3 py-2 border rounded-md" required>
-                </div>
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
-                    <input type="password" name="password" id="password" value="{{ old('password') }}" class="w-full px-3 py-2 border rounded-md" required>
-                </div>
-                <div>
-                    <label for="NIK" class="block text-sm font-medium text-gray-600">NIK</label>
-                    <input type="text" name="NIK" id="NIK" value="{{ old('NIK') }}" class="w-full px-3 py-2 border rounded-md" required>
-                </div>
-                <button type="submit" class="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600">Register</button>
-                <a href="/admin/operator">
-                <button type="button" class="w-full bg-red-500 text-white font-medium py-2 mt-4 rounded-md hover:bg-red-600">Back</button>
-                </a>
-            </form>
         </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/dashboard.js"></script>
 </body>

@@ -16,7 +16,6 @@ class UsersImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         return new User([
-            'id'       => $row[8],
             'name'     => $row[1],
             'email'    => $row[5], 
             'password' => bcrypt($row[6]),
