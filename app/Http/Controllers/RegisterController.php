@@ -51,6 +51,6 @@ class RegisterController extends Controller
         Excel::import(new UsersImport, request()->file('file'));
         Excel::import(new MahasiswaImport, request()->file('file'));
 
-        return redirect('/importFormMahasiswa')->with('success', 'Data imported successfully.');
+        return redirect('importFormMahasiswa')->with('success', 'Data imported successfully.');
     }
 }
