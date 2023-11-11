@@ -115,7 +115,7 @@
             <div class="flex flex-wrap mb-6">
                 <!-- Jadwal Dosen Start -->
                 <div class="w-1/3 mt-6 mx-auto">
-                    <a href="/pkl" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
+                    <a href="/internship" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
                         <div class="w-1/2">
                             <img class="w-full h-48 object-cover rounded-t-lg md:h-32 md:w-full md:rounded-none md:rounded-l-lg" src="/img/1.jpg" alt="">
                         </div>

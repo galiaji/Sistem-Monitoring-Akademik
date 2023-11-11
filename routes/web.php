@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ControllerMahasiswa;
 use App\Http\Controllers\IRSController;
 use App\Http\Controllers\KHSController;
+use App\Http\Controllers\InternshipProgressController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,7 @@ use App\Http\Controllers\KHSController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index'])->name('login');
@@ -37,12 +39,12 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/mahasiswa', [AdminController::class, 'mahasiswa'])->middleware('userAkses:mahasiswa');
-    Route::get('/biodata', [SesiController::class, 'biodata'])->name('biodata'); // Definisi rute ini
+    Route::get('/admin/mahasiswa', [AdminController::class, 'mahasiswa'])->name('dashboardMahasiswa')->middleware('userAkses:mahasiswa');
+    // Route::get('/biodata', [SesiController::class, 'biodata'])->name('biodata'); // Definisi rute ini
     Route::get('/admin/dosenwali', [AdminController::class, 'dosenwali'])->middleware('userAkses:dosenwali');
     Route::get('/admin/departemen', [AdminController::class, 'departemen'])->middleware('userAkses:departemen');
     Route::get('/admin/operator', [AdminController::class, 'operator'])->middleware('userAkses:operator');
-    Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
+    Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
 /** Routes Register */
@@ -56,9 +58,9 @@ Route::post('/register', [ControllerMahasiswa::class, 'register']);
 Route::get('/resetpassword', [ChangePasswordController::class, 'changePassword']);
 Route::post('/resetpassword', [ChangePasswordController::class, 'processChangePassword']);
 
-Route::get('/firstLogin', [MahasiswaFirstLogin::class, 'firstLogin'])->middleware(['auth', 'user.role:mahasiswa', 'is.first.login']);
+// Route::get('/firstLogin', [MahasiswaFirstLogin::class, 'firstLogin'])->middleware(['auth', 'user.role:mahasiswa', 'is.first.login']);
 
-Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importFormMahasiswa');
+Route::get('/admin/operator/importFormMahasiswa', [RegisterController::class, 'importFormMahasiswa'])->name('importMahasiswa');
 Route::post('/admin/operator/importMahasiswa', [RegisterController::class, 'importMahasiswa'])->name('importMahasiswa');
 
 Route::get('/akademik/irs', [AkademikController::class, 'showIRS'])->name('show-irs');
@@ -71,3 +73,7 @@ Route::post('/irs', [IRSController::class, 'store'])->name('irs.store');
 Route::get('/khs', [KHSController::class, 'index'])->name('khs.index');
 Route::get('/khs', [KHSController::class, 'index'])->name('khs.index');
 Route::post('/khs/store', [KHSController::class, 'store'])->name('khs.store');
+
+
+Route::get('/internship', [InternshipProgressController::class, 'create'])->name('internship.create');
+Route::post('/internship', [InternshipProgressController::class, 'store'])->name('internship.store');
