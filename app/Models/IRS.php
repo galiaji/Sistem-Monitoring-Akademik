@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class IRS extends Model
 {
     protected $table = 'irs_data';
-    protected $fillable = ['semester', 'IP', 'SKS'];
+    protected $fillable = ['nim', 'semester', 'semester_aktif', 'IP', 'SKS'];
 }
