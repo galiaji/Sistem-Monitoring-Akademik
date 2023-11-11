@@ -115,12 +115,12 @@
             <div class="flex flex-wrap mb-6">
                 <!-- Jadwal Dosen Start -->
                 <div class="w-1/3 mt-6 mx-auto">
-                    <a href="#" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
+                    <a href="/pkl" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
                         <div class="w-1/2">
                             <img class="w-full h-48 object-cover rounded-t-lg md:h-32 md:w-full md:rounded-none md:rounded-l-lg" src="/img/1.jpg" alt="">
                         </div>
                         <div class="w-1/2 p-4">
-                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">Jadwal Dosen</h5>
+                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">PKL</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
                         </div>
                     </a>
@@ -129,12 +129,12 @@
 
                 <!-- Jadwal Kuliah Start -->
                 <div class="w-1/3 mt-6 mx-auto px-6">
-                    <a href="#" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
+                    <a href="/khs" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
                         <div class="w-1/2">
                             <img class="w-full h-48 object-cover rounded-t-lg md:h-32 md:w-full md:rounded-none md:rounded-l-lg" src="/img/2.jpg" alt="">
                         </div>
                         <div class="w-1/2 p-4">
-                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">Jadwal Mahasiswa</h5>
+                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">KHS</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
                         </div>
                     </a>
@@ -143,12 +143,12 @@
 
                 <!-- Akademik Start -->
                 <div class="w-1/3 mt-6 mx-auto">
-                    <a href="#" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
+                    <a href="/irs" class="flex items-center bg-white shadow-lg rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:bg-white dark:hover:bg-white-700">
                         <div class="w-1/2">
                             <img class="w-full h-48 object-cover rounded-t-lg md:h-32 md:w-full md:rounded-none md:rounded-l-lg" src="/img/3.jpg" alt="">
                         </div>
                         <div class="w-1/2 p-4">
-                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">Akademik</h5>
+                            <h5 class="items-center mb-2 text-2xl font-bold tracking-tight text-black dark:text-black pl-6">IRS</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
                         </div>
                     </a>

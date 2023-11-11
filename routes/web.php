@@ -7,7 +7,8 @@ use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ControllerMahasiswa;
-
+use App\Http\Controllers\IRSController;
+use App\Http\Controllers\KHSController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,3 +64,10 @@ Route::post('/admin/operator/importMahasiswa', [RegisterController::class, 'impo
 Route::get('/akademik/irs', [AkademikController::class, 'showIRS'])->name('show-irs');
 Route::post('/akademik/irs/pilih/{id}', [AkademikController::class, 'pilihMatkul'])->name('pilih-matkul');
 Route::post('/akademik/irs/batal/{id}', [AkademikController::class, 'batalMemilih'])->name('batal-memilih');
+
+Route::get('/irs', [IRSController::class, 'create'])->name('irs.index');
+Route::post('/irs', [IRSController::class, 'store'])->name('irs.store');
+
+Route::get('/khs', [KHSController::class, 'index'])->name('khs.index');
+Route::get('/khs', [KHSController::class, 'index'])->name('khs.index');
+Route::post('/khs/store', [KHSController::class, 'store'])->name('khs.store');
