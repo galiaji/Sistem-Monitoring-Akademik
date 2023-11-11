@@ -20,7 +20,7 @@
                     <input class="w-full px-3 py-2 border" type="text" name="nim" value="{{ $nim }}" readonly>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-sm font-semibold mb-2" for="semester">Semester</label>
+                    <label class="block text-sm font-semibold mb-2" for="semester_aktif">Semester Aktif</label>
                     <select class="w-full px-3 py-2 border" id="semester_aktif" name="semester_aktif" required>
                         <option value="">Pilih Semester_aktif</option>
                         <option value="1">1</option>
