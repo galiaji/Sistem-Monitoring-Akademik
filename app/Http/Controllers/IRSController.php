@@ -43,10 +43,6 @@ class IRSController extends Controller
             'IP' => 'required',
             'SKS' => 'required',
         ]);
-
-        // Create a new IRS instance using mass assignment
-        IRS::create($request->all());
-
         return redirect()->back()->with('success', 'Data saved successfully!');
     }
 }
