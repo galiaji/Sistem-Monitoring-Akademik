@@ -3,26 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-
 use App\Models\KHS;
 use Illuminate\Http\Request;
 
 class KHSController extends Controller
-{
-    // Fungsi untuk memeriksa apakah mata kuliah sudah dipilih di semester yang sama
-    public function checkCourse(Request $request)
-    {
-        $semester = $request->input('semester');
-        $course = $request->input('course');
-
-        $existingCourse = KHS::where('semester', $semester)
-            ->where('course', $course)
-            ->exists();
-
-        return response()->json(['exists' => $existingCourse]);
-    }
-
-    // Fungsi untuk menampilkan halaman entry KHS
+{ // Fungsi untuk menampilkan halaman entry KHS
     public function index()
     {
         $namaLengkap = auth()->user()->name;
@@ -43,12 +28,11 @@ class KHSController extends Controller
     {
         $data = $request->validate([
             'semester' => 'required',
-            'courses' => 'required|array',
-            'courses.*' => 'required',
-            'grades' => 'required|array',
-            'grades.*' => 'required',
-            'sks' => 'required|array',
-            'sks.*' => 'required|numeric',
+            'ip' => 'required|numeric|min:0|max:4',
+            'ipk' => 'required|numeric|min:0|max:4',
+            'sks' => 'required|numeric',
+            'sksk' => 'required|numeric',
+            'pdf_file' => 'required|mimes:pdf|max:2048', // max:2048 menunjukkan ukuran maksimum dalam kilobyte (2MB)
         ]);
 
         $namaLengkap = auth()->user()->name;
@@ -61,23 +45,19 @@ class KHSController extends Controller
 
         $nim = $userData ? $userData->nim : null;
 
-        foreach ($data['courses'] as $key => $course) {
-            $existingCourse = KHS::where('semester', $data['semester'])
-                ->where('course', $course)
-                ->exists();
+        // Simpan file PDF
+        $pdfFileName = time() . '.' . $request->file('pdf_file')->extension();
+        $request->file('pdf_file')->move(public_path('pdf_files'), $pdfFileName);
 
-            if ($existingCourse) {
-                return redirect()->back()->with('error', 'This course is already chosen for this semester.');
-            }
-
-            KHS::create([
-                'nim' => $nim,
-                'semester' => $data['semester'],
-                'course' => $course,
-                'grade' => $data['grades'][$key],
-                'sks' => $data['sks'][$key],
-            ]);
-        }
+        KHS::create([
+            'nim' => $nim,
+            'semester' => $data['semester'],
+            'ip' => $data['ip'],
+            'ipk' => $data['ipk'],
+            'sks' => $data['sks'],
+            'sksk' => $data['sksk'],
+            'pdf_file' => $pdfFileName,
+        ]);
 
         return redirect()->back()->with('success', 'KHS data saved successfully!');
     }
